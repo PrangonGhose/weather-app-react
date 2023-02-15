@@ -40,7 +40,7 @@ const Weather = () => {
           <img src={weatherCountry[0].countryFlag} alt="" />
           <div className="card-body">
             <h5 className="card-title text-center">
-              Weather of
+              Weather of&nbsp;
               {countryCapital}
               ,
               {weatherCountry[0].countryName}
