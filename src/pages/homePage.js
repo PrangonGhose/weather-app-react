@@ -2,9 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import { BsFillGearFill, BsFillMicFill } from 'react-icons/bs';
 import CountryCard from '../components/home';
 import { getCountry, getRegion, getSubRegion } from '../redux/home/home';
 import logo from '../images/logo.png';
+import all from '../images/all.png';
+import america from '../images/america.png';
+import asia from '../images/asia.png';
+import africa from '../images/africa.png';
+import europe from '../images/europe.png';
+import oceania from '../images/oceania.png';
 
 const HomePage = () => {
   let countryList = useSelector((state) => state.country);
@@ -13,6 +20,8 @@ const HomePage = () => {
   }
   const [region, setRegion] = useState('All');
   const [subRegion, setSubRegion] = useState('All');
+  const [map, setMap] = useState(all);
+  const [title, setTitle] = useState('The World');
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -27,6 +36,21 @@ const HomePage = () => {
     }
     setSubRegion('All');
     setRegion(event.target.value);
+    setTitle(event.target.value);
+    if (event.target.value.includes('All')) {
+      setMap(all);
+      setTitle('The World');
+    } else if (event.target.value.includes('Asia')) {
+      setMap(asia);
+    } else if (event.target.value.includes('America')) {
+      setMap(america);
+    } else if (event.target.value.includes('Africa')) {
+      setMap(africa);
+    } else if (event.target.value.includes('Europe')) {
+      setMap(europe);
+    } else {
+      setMap(oceania);
+    }
   };
 
   const handleChangeSub = (event) => {
@@ -35,12 +59,27 @@ const HomePage = () => {
     }
     setRegion('All');
     setSubRegion(event.target.value);
+    setTitle(event.target.value);
+    if (event.target.value.includes('All')) {
+      setMap(all);
+      setTitle('The World');
+    } else if (event.target.value.includes('Asia')) {
+      setMap(asia);
+    } else if (event.target.value.includes('America')) {
+      setMap(america);
+    } else if (event.target.value.includes('Africa')) {
+      setMap(africa);
+    } else if (event.target.value.includes('Europe')) {
+      setMap(europe);
+    } else {
+      setMap(oceania);
+    }
   };
 
   return (
     <div className="flex">
       <Navbar expand="lg" className="navbar">
-        <Navbar.Brand href="./">
+        <Navbar.Brand href="./" className="text-white">
           <img
             src={logo}
             width="40"
@@ -93,10 +132,25 @@ const HomePage = () => {
                 <option value="Central America">Central America</option>
                 <option value="South America">South America</option>
               </select>
+              <BsFillMicFill className="gear" />
+              <BsFillGearFill className="gear" />
             </label>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
+      <div className="display">
+        <div className="image-holder">
+          <img
+            src={map}
+            width="100%"
+            height="100%"
+            alt="Weather App logo"
+          />
+        </div>
+        <div className="title">
+          <h1 className="text-white">{title}</h1>
+        </div>
+      </div>
       <div className="container-fluid all-countries">
         <div className="header">
           <h2>
@@ -104,7 +158,7 @@ const HomePage = () => {
             {countryList.length}
           </h2>
         </div>
-        <div className="d-flex flex-wrap">
+        <div className="d-flex flex-wrap country-holder">
           {countryList.map((country) => (
             <CountryCard
               key={country.countryName}
@@ -115,6 +169,7 @@ const HomePage = () => {
               countryCapital={country.countryCapital}
             />
           ))}
+          <div className="pseudo-div" />
         </div>
       </div>
     </div>
