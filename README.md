@@ -48,7 +48,7 @@
 > Describe between 1-3 key features of the application.
 
 - A **Single Page Application** (SPA) created using `React` library.
-- This web application can perform simple calculations and show random quotes.
+- This web application can show and filter countries with some data and can retrieve their current weather.
 - Code is written following **__JSX__** syntax.
 - The web application is maintained using `Redux store`.
 - API calls are made using `Redux Async toolkit` _createAsyncThunk_.
