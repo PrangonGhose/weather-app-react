@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import Navbar from 'react-bootstrap/Navbar';
 import { Link, useParams } from 'react-router-dom';
-import { BsFillArrowLeftCircleFill, BsWind } from 'react-icons/bs';
+import { BsWind } from 'react-icons/bs';
+import { IoIosArrowBack } from 'react-icons/io';
 import { FaTemperatureHigh, FaSkyatlas } from 'react-icons/fa';
 import { getWeather } from '../redux/weather/weather';
 
@@ -29,40 +31,49 @@ const Weather = () => {
   }
 
   return (
-    <div className="container flex">
+    <div className="flex">
       <div className="first-row">
-        <Link to="/">
-          <BsFillArrowLeftCircleFill className="back" />
-        </Link>
+        <Navbar expand="lg" className="navbar">
+          <Navbar.Brand href="./" className="text-white">
+            <Link to="/">
+              <IoIosArrowBack className="back" />
+            </Link>
+            &nbsp;Weather Data
+          </Navbar.Brand>
+        </Navbar>
       </div>
       <div className="second-row flex">
-        <div className="card weather-card" style={{ width: '30rem' }}>
-          <img src={weatherCountry[0].countryFlag} alt="" />
-          <div className="card-body">
-            <h5 className="card-title text-center">
-              Weather of&nbsp;
-              {countryCapital}
-              ,
-              {weatherCountry[0].countryName}
-            </h5>
+        <div className="card weather-card" style={{ width: '95%' }}>
+          <div className="card-display flex">
+            <div className="image-holder flex">
+              <img src={weatherCountry[0].countryFlag} alt={`Flag of ${weatherCountry[0].countryName}`} className="flag" />
+            </div>
+            <div className="card-body">
+              <h5 className="card-title text-center">
+                Weather of&nbsp;
+                {countryCapital}
+                ,&nbsp;
+                {weatherCountry[0].countryName}
+              </h5>
+            </div>
           </div>
-          <ul className="list-group list-group-flush">
-            <li className="list-group-item">
-              <FaTemperatureHigh className="react-icons" />
+          <ul className="list-group">
+            <li className="list-group-item text-white" style={{ backgroundColor: '#ec4c8a' }}>
+              <FaTemperatureHigh className="react-icons text-dark" />
               {' '}
               The temperature of today is
               {' '}
               {temperature}
             </li>
-            <li className="list-group-item">
-              <BsWind className="react-icons" />
+            <li className="list-group-item text-white" style={{ backgroundColor: '#f38fb5' }}>
+              <BsWind className="react-icons text-dark" />
               {' '}
               The wind speed is
               {' '}
               {wind}
             </li>
-            <li className="list-group-item">
-              <FaSkyatlas className="react-icons" />
+            <li className="list-group-item text-white" style={{ backgroundColor: '#ec4c8a' }}>
+              <FaSkyatlas className="react-icons text-dark" />
               {' '}
               The sky is
               {' '}
