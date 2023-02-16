@@ -167,6 +167,7 @@ Authors would like to thank:
 - [Microverse](https://www.microverse.org/)
 - [REST Countries API](https://restcountries.com/#)
 - [Weather API](https://github.com/robertoduessmann/weather-api)
+- Design inspiration [Nelson Sakwa](https://www.behance.net/sakwadesignstudio)
 - Code Reviewers
 - Coding Partners
 
